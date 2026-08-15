@@ -1,0 +1,14 @@
+version: "3"
+
+tasks:
+  dev:
+    dir: examples/simple_chat
+    cmds:
+      - powershell -Command "[Console]::Write([char]27 + ']0;GenUI SimpleChat' + [char]7)"
+      - powershell -Command "Clear-Host"
+      - pwsh -NoProfile "E:\vs\Scripts_Projects\PowershellScripts\checkout-and-pull-main.ps1"
+      - pwsh -NoProfile -Command "\$env:Path = 'C:\src\flutter\bin;' + \$env:Path; \$key = (Get-Content ..\..\.env | Select-String 'GEMINI_API_KEY=(.*)').Matches.Groups[1].Value; & 'E:\vs\Scripts_Projects\PowershellScripts\FlutterAutoHotReload.ps1' -Device chrome -ExtraArgs '--web-port=8765', \"--dart-define=GEMINI_API_KEY=\$key\""
+
+  stop:
+    cmds:
+      - powershell -NoProfile -Command "Get-Process -Name dart,flutter -ErrorAction SilentlyContinue | Stop-Process -Force"
