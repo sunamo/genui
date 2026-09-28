@@ -1,4 +1,37 @@
-# `genui` Changelog
+# [genui](https://pub.dev/packages/genui) Changelog
+
+## 0.10.4
+
+- **Fix**: `Image` now takes the catalog's `description` property and announces it. The property is what the basic
+  catalog defines for accessibility text, and `web_core` declares it, but genui's schema did not have it, so the text
+  an agent sent was accepted and dropped. An image has nothing inside it to infer a name from, so the result was an
+  unnamed node that assistive technology did not even report as an image. The value is a `DynamicString`, so a path
+  or a function call resolves like any other property.
+
+## 0.10.3
+
+- Updated `basicCatalogId` to point to the canonical URL: `https://a2ui.org/specification/v0_9/catalogs/basic/catalog.json`.
+- Introduced `catalogIdAliases` in `Catalog` model to support alternate URLs (like the legacy/non-canonical one) for graceful backwards compatibility.
+- Augmented `SurfaceController` so that the protocol processor successfully processes both canonical and secondary aliases transparently.
+- Fixed `PluralizeFunction` to use `Intl.pluralLogic` instead of `Intl.plural` to
+  avoid message extraction errors when arguments are dynamic runtime
+  expressions.
+
+## 0.10.2
+
+- Fixed `A2uiTransportAdapter.incomingText` trimming every streamed chunk, which
+  made words run together when chunks were concatenated.
+
+- Added examples of how to use TextField.
+
+- Fixed `TextField` variants: `longText` now grows to fit multiple lines,
+  `number` now rejects non-numeric input, and the `obscured`
+  example now sets `variant` so that it is actually obscured.
+
+- `TextField.validationRegexp` is now enforced: the value has to match the
+  pattern in full, an empty field is exempt, and a value that does not match
+  shows an error and blocks `onSubmittedAction`. It was previously accepted and
+  ignored.
 
 ## 0.10.1
 
