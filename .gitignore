@@ -86,3 +86,14 @@ app.*.map.json
 .vscode/settings.json
 
 **/devtools_options.yaml
+# Doplneno automaticky - odstraneny trackovane build/cache slozky
+bin/
+obj/
+node_modules/
+.vs/
+target/
+Debug/
+Release/
+x64/
+x86/
+.gradle/
