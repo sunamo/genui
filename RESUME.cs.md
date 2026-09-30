@@ -1,9 +1,12 @@
 ---
-schema_version: 1
+schema_version: 3
 type: other
 file_count: 696
 delete_recommendation_percent: 97
 generated_date: 2026-09-30
+generated_time: 00:00:00
+github_origin: yes
+github_source_url: https://github.com/flutter/genui
 ---
 
 ## Description
