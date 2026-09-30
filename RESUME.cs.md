@@ -1,5 +1,5 @@
 ---
-schema_version: 4
+schema_version: 5
 type: learning
 file_count: 696
 delete_recommendation_percent: 97
@@ -7,6 +7,9 @@ generated_date: 2026-09-30
 generated_time: 16:05:27
 github_origin: yes
 github_source_url: https://github.com/flutter/genui
+first_commit_date: 2026-07-28
+last_commit_date: 2026-09-29
+commit_count: 18
 ---
 
 ## Description
@@ -25,3 +28,11 @@ Doporučení ke smazání: **97 %** — jde o kopii cizího repa flutter/genui b
 
 - Původ je na GitHubu (flutter/genui), lze kdykoli znovu stáhnout.
 - Studijní materiál, žádný vlastní kód.
+
+## Historie commitů
+
+- První commit: 2026-07-28
+- Poslední commit: 2026-09-29
+- Celkem commitů: 18
+
+- Počítá se bez commitů, které jen generovaly RESUME.cs.md nebo README.md.
