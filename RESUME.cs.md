@@ -9,3 +9,9 @@ generated_date: 2026-09-30
 ## Description
 
 A Flutter library to enable developers to easily add interactive generative UI to their applications.
+
+## Původ zdrojáků
+
+Staženo z GitHubu: **ano** — [flutter/genui](https://github.com/flutter/genui)
+
+- Zdroj určen podle: remote 'upstream' miri na cizi GitHub repo.
