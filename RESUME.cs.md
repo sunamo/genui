@@ -1,5 +1,5 @@
 ---
-schema_version: 3
+schema_version: 4
 type: learning
 file_count: 696
 delete_recommendation_percent: 97
@@ -18,3 +18,10 @@ Kopie (fork) knihovny genui od týmu Flutteru, která do Flutter aplikací přid
 Staženo z GitHubu: **ano** — [flutter/genui](https://github.com/flutter/genui)
 
 - Zdroj určen podle: origin je fork sunamo/genui, remote upstream míří na flutter/genui, historie obsahuje commity cizích autorů (např. Diego López), README je původní z upstreamu ("A Flutter library to enable developers to easily add interactive generative UI").
+
+## Doporučení ke smazání
+
+Doporučení ke smazání: **97 %** — jde o kopii cizího repa flutter/genui bez vlastních změn.
+
+- Původ je na GitHubu (flutter/genui), lze kdykoli znovu stáhnout.
+- Studijní materiál, žádný vlastní kód.
