@@ -6,6 +6,10 @@ The new packages will have a different API.
 
 # Generative UI SDK for Flutter (genui)
 
+## Short description
+
+Kopie (fork) knihovny genui od týmu Flutteru, která do Flutter aplikací přidává generované interaktivní UI. Repo obsahuje balíčky, příklady, dokumentaci a nástroje, submoduly A2UI a JSON-Schema-Test-Suite. Slouží ke studiu a učení, ne jako vlastní projekt.
+
 A Flutter library to enable developers to easily add interactive
 generative UI to their applications.
 
