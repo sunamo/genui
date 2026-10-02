@@ -8,9 +8,9 @@ import 'package:json_schema_builder/json_schema_builder.dart';
 import '../../model/a2ui_schemas.dart';
 import '../../model/catalog_item.dart';
 import '../../model/data_model.dart';
+import '../../model/validation_helper.dart';
 import '../../primitives/simple_items.dart';
 import '../../widgets/widget_utilities.dart';
-import 'widget_helpers.dart';
 
 final _schema = S.object(
   description: 'A slider for selecting a value from a range.',
@@ -54,6 +54,15 @@ extension type _SliderData.fromMap(JsonMap _json) {
   }
 }
 
+String _formatSliderValue(num val) {
+  if (val == val.roundToDouble()) {
+    return val.toInt().toString();
+  }
+  final String fixed = val.toStringAsFixed(6);
+  final String trimmed = fixed.replaceAll(RegExp(r'\.?0+$'), '');
+  return trimmed.isEmpty ? '0' : trimmed;
+}
+
 /// A Material Design slider.
 ///
 /// This widget allows the user to select a value from a range by sliding a
@@ -89,6 +98,13 @@ final slider = CatalogItem(
           }
         }
 
+        final double min = sliderData.min;
+        final double max = sliderData.max < min ? min : sliderData.max;
+        final double currentVal = (effectiveValue ?? min).toDouble().clamp(
+          min,
+          max,
+        );
+
         final Widget sliderWidget = Padding(
           padding: const EdgeInsetsDirectional.only(end: 16.0),
           child: Row(
@@ -96,18 +112,15 @@ final slider = CatalogItem(
             children: [
               Expanded(
                 child: Slider(
-                  value: (effectiveValue ?? sliderData.min).toDouble(),
-                  min: sliderData.min,
-                  max: sliderData.max,
-                  divisions: (sliderData.max - sliderData.min).toInt(),
+                  value: currentVal,
+                  min: min,
+                  max: max,
                   onChanged: (newValue) {
                     itemContext.dataContext.update(DataPath(path), newValue);
                   },
                 ),
               ),
-              Text(
-                value?.toStringAsFixed(0) ?? sliderData.min.toStringAsFixed(0),
-              ),
+              Text(_formatSliderValue(currentVal)),
             ],
           ),
         );
@@ -116,14 +129,14 @@ final slider = CatalogItem(
           dataContext: itemContext.dataContext,
           value: sliderData.label,
           builder: (context, label) {
-            return StreamBuilder<bool>(
-              stream: itemContext.dataContext.evaluateConditionStream(
-                checksToExpression(sliderData.checks),
+            return StreamBuilder<String?>(
+              stream: ValidationHelper.validateStream(
+                sliderData.checks,
+                itemContext.dataContext,
               ),
-              initialData: true,
               builder: (context, snapshot) {
-                final bool isValid = snapshot.data ?? true;
-                final bool isError = !isValid;
+                final String? errorMessage = snapshot.data;
+                final isError = errorMessage != null;
 
                 final List<Widget> children = [
                   if (label != null)
@@ -142,7 +155,7 @@ final slider = CatalogItem(
                     Padding(
                       padding: const EdgeInsets.only(left: 16.0, top: 4.0),
                       child: Text(
-                        'Invalid value',
+                        errorMessage,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.error,
                           fontSize: 12,

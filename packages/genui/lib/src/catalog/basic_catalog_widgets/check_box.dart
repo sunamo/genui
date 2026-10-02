@@ -8,9 +8,9 @@ import 'package:json_schema_builder/json_schema_builder.dart';
 import '../../model/a2ui_schemas.dart';
 import '../../model/catalog_item.dart';
 import '../../model/data_model.dart';
+import '../../model/validation_helper.dart';
 import '../../primitives/simple_items.dart';
 import '../../widgets/widget_utilities.dart';
-import 'widget_helpers.dart';
 
 final _schema = S.object(
   description: 'A selectable checkbox used for boolean toggles with a label.',
@@ -61,23 +61,29 @@ final checkBox = CatalogItem(
       value: checkBoxData.label,
       builder: (context, label) {
         // Wrap the checkbox in validation
-        return StreamBuilder<bool>(
-          stream: itemContext.dataContext.evaluateConditionStream(
-            checksToExpression(checkBoxData.checks),
+        return StreamBuilder<String?>(
+          stream: ValidationHelper.validateStream(
+            checkBoxData.checks,
+            itemContext.dataContext,
           ),
-          initialData: true,
           builder: (context, snapshot) {
-            final bool isValid = snapshot.data ?? true;
-            final bool isError = !isValid;
+            final String? errorMessage = snapshot.data;
+            final isError = errorMessage != null;
 
             return ListTileTheme.merge(
               child: BoundBool(
                 dataContext: itemContext.dataContext,
                 value: {'path': path},
                 builder: (context, value) {
+                  // Nothing has been written to the path yet on the first
+                  // build, so the literal the model sent is what the checkbox
+                  // shows until something does, the way `Slider` and
+                  // `TextField` already treat theirs.
+                  final bool? effectiveValue =
+                      value ?? (valueRef is bool ? valueRef : null);
                   return CheckboxListTile(
                     title: Text(label ?? ''),
-                    value: value ?? false,
+                    value: effectiveValue ?? false,
                     onChanged: (bool? newValue) {
                       if (newValue != null) {
                         itemContext.dataContext.update(
@@ -88,7 +94,7 @@ final checkBox = CatalogItem(
                     },
                     subtitle: isError
                         ? Text(
-                            'Invalid value',
+                            errorMessage,
                             style: TextStyle(
                               color: Theme.of(context).colorScheme.error,
                               fontSize: 12,
