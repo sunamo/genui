@@ -1,6 +1,6 @@
 ---
 schema_version: 9
-type: learning
+type: sample
 file_count: 696
 avg_lines_per_file: 126
 total_lines: 14559
