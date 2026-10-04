@@ -1,7 +1,10 @@
 ---
-schema_version: 10
+schema_version: 11
 type: forked-notmine-sample
+category_override: none
 file_count: 696
+file_extensions: dart:333, png:121, sample:92, md:57, noext:43, xcconfig:30, yaml:29, txt:27, plist:24, jpg:23, swift:23, h:21, json:20, webp:17, cc:14, xml:13, py:9, xcworkspacedata:9, cpp:8, entitlements:8, lock:8, pbxproj:7, xcscheme:7, cmake:6, kts:6, storyboard:6, ttf:6, xcsettings:6, properties:4, toml:4, xib:4, sh:3, html:2, ico:2, kt:2, manifest:2, mmd:2, rc:2, svg:2, gif:1, mjs:1, typed:1, yml:1
+file_extensions_updated: 2026-10-04
 avg_lines_per_file: 126
 total_lines: 14559
 metrics_lm: 2026-10-01 16:40:17
