@@ -1,6 +1,6 @@
 ---
 schema_version: 10
-type: notmine_sample
+type: forked_notmine_sample
 file_count: 696
 avg_lines_per_file: 126
 total_lines: 14559
