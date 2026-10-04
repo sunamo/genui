@@ -1,17 +1,26 @@
 ---
-schema_version: 7
-type: learning
+schema_version: 11
+type: forked-notmine-sample
+category_override: none
 file_count: 696
+file_extensions: dart:333, png:121, sample:92, md:57, noext:43, xcconfig:30, yaml:29, txt:27, plist:24, jpg:23, swift:23, h:21, json:20, webp:17, cc:14, xml:13, py:9, xcworkspacedata:9, cpp:8, entitlements:8, lock:8, pbxproj:7, xcscheme:7, cmake:6, kts:6, storyboard:6, ttf:6, xcsettings:6, properties:4, toml:4, xib:4, sh:3, html:2, ico:2, kt:2, manifest:2, mmd:2, rc:2, svg:2, gif:1, mjs:1, typed:1, yml:1
+file_extensions_updated: 2026-10-04
 avg_lines_per_file: 126
+total_lines: 14559
+metrics_lm: 2026-10-01 16:40:17
 move_to_legacy_percent: 97
-generated_date: 2026-10-01
-generated_time: 16:40:17
+description_updated: 2026-10-01
+links_updated: 2026-10-01
 github_source_url: https://github.com/flutter/genui
+origin_status: found
+origin_checked: 2026-10-01
+article_source_url: not found
+article_status: none
+article_checked: 2026-10-03
 last_build_ok: no
 last_build_date: 2026-10-02
-last_tests_run_date: n/a
+last_tests_run_date: not run
 covered_lines: 0
-total_lines: 14559
 ---
 
 ## Description
@@ -23,6 +32,8 @@ Kopie (fork) knihovny genui od týmu Flutteru, která do Flutter aplikací přid
 Staženo z GitHubu: **ano** — [flutter/genui](https://github.com/flutter/genui)
 
 - Zdroj určen podle: origin je fork sunamo/genui, remote upstream míří na flutter/genui, historie obsahuje commity cizích autorů (např. Diego López), README je původní z upstreamu ("A Flutter library to enable developers to easily add interactive generative UI").
+
+Článek, ze kterého by kód byl opsaný, se nenašel (zjišťovalo se v souborech repa a podle názvu).
 
 ## Doporučení přesunu do legacy
 
